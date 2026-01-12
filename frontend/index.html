@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Smart Search AI</title>
+    <link rel="stylesheet" href="./style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <nav class="navbar">
+      <a href="/" class="nav-logo" id="logoBtn">Smart Search AI</a>
+      
+      <div class="nav-links">
+        <button id="reportBtn" class="nav-link-btn">Relatório Técnico do Projeto</button>
+        <a href="https://github.com/devlucascfarias" target="_blank" class="nav-item" title="GitHub">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+        </a>
+        <a href="https://www.linkedin.com/in/lucas-correia-b856152b5/" target="_blank" class="nav-item" title="LinkedIn">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+        </a>
+      </div>
+    </nav>
+
+    <div class="container">
+      <aside class="sidebar">
+        <h3>Categorias</h3>
+        <ul id="categoryList" class="category-list">
+          <li class="category-item active" id="featuredItem">Destaques</li>
+          <!-- Categorias carregadas via JS -->
+        </ul>
+      </aside>
+
+      <main class="main-content">
+        <section id="aiSection" class="ai-results hidden">
+          <div class="ai-header">
+            <div style="display: flex; align-items: center; gap: 10px;">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M12,2A10,10,0,1,0,22,12,10,10,0,0,0,12,2Zm0,18a8,8,0,1,1,8-8A8,8,0,0,1,12,20Z"/><path d="M12,17a1,1,0,1,0-1-1A1,1,0,0,0,12,17Z"/><path d="M12,7a3,3,0,0,0-3,3,1,1,0,0,0,2,0,1,1,0,0,1,2,0,1,1,0,0,1-1,1,1,1,0,0,0-1,1v1a1,1,0,0,0,2,0V12.75A3,3,0,0,0,12,7Z"/></svg>
+              Sugestões Inteligentes
+            </div>
+            <button id="newSearchBtn" class="new-search-btn">Fazer outra Busca Inteligente</button>
+          </div>
+          <div id="aiResponseText" class="ai-message"></div>
+        </section>
+
+        <section id="heroSection" class="hero">
+          <div class="hero-info">
+            <h2>Busca Inteligente com NLP e RAG</h2>
+            <p>Foi utilizado técnicas de <strong>Processamento de Linguagem Natural (NLP)</strong> para transformar sua busca em uma experiência inteligente. Encontre exatamente o que você precisa por meio de pesquisas semânticas.</p>
+          </div>
+          
+          <div class="hero-actions">
+            <div class="hero-search">
+              <input type="text" id="searchInput" placeholder="O que você deseja encontrar hoje? (ex: perfumes masculinos marcantes)" />
+              <button id="searchBtn">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+              </button>
+            </div>
+            <div class="search-suggestions">
+              <span class="suggestion-pill">Perfumes marcantes</span>
+              <span class="suggestion-pill">Ar condicionado silencioso</span>
+              <span class="suggestion-pill">Fones para academia</span>
+            </div>
+          </div>
+        </section>
+
+        <section id="reportSection" class="report-container hidden">
+          <div class="report-header">
+            <h1>Relatório</h1>
+            <p class="subtitle">Arquitetura de Agentes de IA e Engenharia de Prompt</p>
+          </div>
+
+          <div class="report-grid">
+            <div class="report-card">
+              <h3><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg> Visão Geral</h3>
+              <p>Este sistema é um assistente de e-commerce que transcende a busca por palavras-chave tradicional. Ele utiliza <strong>NLP (Natural Language Processing)</strong> para decodificar a intenção semântica do usuário, permitindo buscas complexas e contextualizadas.</p>
+            </div>
+
+            <div class="report-card">
+              <h3><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg> Engenharia de Agentes</h3>
+              <ul>
+                <li><strong>Agente de Intenção:</strong> Um estágio via LLM analisa a query para identificar categorias, extrair orçamentos e filtrar ruído.</li>
+                <li><strong>RAG (Retrieval-Augmented Generation):</strong> O assistente consulta um banco de dados real antes de gerar recomendações, evitando alucinações.</li>
+              </ul>
+            </div>
+
+            <div class="report-card">
+              <h3><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg> Stack Tecnológica</h3>
+              <div class="stack-container">
+                <div class="stack-group">
+                  <h4>Frontend</h4>
+                  <div class="tech-tags">
+                    <span class="tag">JavaScript (Vite)</span>
+                    <span class="tag">Responsive Design</span>
+                  </div>
+                </div>
+                <div class="stack-group">
+                  <h4>Backend</h4>
+                  <div class="tech-tags">
+                    <span class="tag">Python (FastAPI)</span>
+                    <span class="tag">LangChain</span>
+                    <span class="tag">Gemini AI API</span>
+                    <span class="tag">Pydantic</span>
+                    <span class="tag">Pandas</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="report-card">
+              <h3><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg> Foco em IA Engineering</h3>
+              <p>O projeto demonstra a integração de LLMs em fluxos produtivos, lidando com limitações de tokens e garantindo uma interface responsiva para recrutadores e engenheiros.</p>
+            </div>
+          </div>
+        </section>
+
+        <h2 id="sectionTitle" class="section-title">Produtos em Destaque</h2>
+        
+        <div id="loader" class="loader hidden">
+          <div class="spinner"></div>
+          <p>Buscando os melhores produtos...</p>
+        </div>
+
+        <div id="productGrid" class="product-grid">
+          <!-- Produtos renderizados aqui -->
+        </div>
+
+        <div id="pagination" class="pagination-container hidden">
+          <button id="prevPage" class="pag-btn">Anterior</button>
+          <span id="pageInfo">Página 1 de 10</span>
+          <button id="nextPage" class="pag-btn">Próxima</button>
+        </div>
+      </main>
+    </div>
+
+    <footer class="footer-navbar">
+      <a href="/" class="nav-logo" id="logoBtnFooter">Smart Search AI</a>
+      
+      <div class="nav-links">
+        <button id="reportBtnFooter" class="nav-link-btn">Relatório</button>
+        <a href="https://github.com/devlucascfarias" target="_blank" class="nav-item" title="GitHub">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+        </a>
+        <a href="https://www.linkedin.com/in/lucas-correia-b856152b5/" target="_blank" class="nav-item" title="LinkedIn">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+        </a>
+      </div>
+    </footer>
+
+    <script type="module" src="/main.js"></script>
+  </body>
+</html>
