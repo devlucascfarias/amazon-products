@@ -25,8 +25,9 @@ def main():
     logger.info("Estimated time: 5-10 minutes")
     
     try:
-        vector_store = VectorStoreManager()
-        logger.info("Vector Store initialized successfully")
+        vector_store = VectorStoreManager(skip_init=True)
+        vector_store.rebuild_store()
+        logger.info("Vector Store initialized and rebuilt successfully")
         logger.info("Semantic search is now available")
         
     except Exception as e:

@@ -12,7 +12,7 @@ from langchain_google_genai import GoogleGenerativeAIEmbeddings
 from langchain_chroma import Chroma
 from langchain_core.documents import Document
 
-from products import get_df_by_category, ALL_CATEGORIES, translate_category
+from products import get_df_by_category, ALL_CATEGORIES
 
 logger = logging.getLogger(__name__)
 
@@ -20,7 +20,7 @@ logger = logging.getLogger(__name__)
 class VectorStoreManager:
     """Manages the vector store of products for semantic search"""
     
-    def __init__(self, persist_directory: str = None):
+    def __init__(self, persist_directory: str = None, skip_init: bool = False):
         if persist_directory is None:
             persist_directory = os.path.join(os.path.dirname(__file__), "chroma_db")
         
@@ -33,7 +33,8 @@ class VectorStoreManager:
         )
         
         self.vector_store = None
-        self._load_or_create_store()
+        if not skip_init:
+            self._load_or_create_store()
     
     def _load_or_create_store(self):
         """Loads existing vector store or creates a new one"""
@@ -67,18 +68,17 @@ class VectorStoreManager:
                 if df is None or len(df) == 0:
                     continue
                 
-                category_translated = translate_category(category)
                 df_sample = df.head(50)
                 
                 for _, row in df_sample.iterrows():
-                    product_text = f"{row['name']} - Category: {category_translated}"
+                    product_text = f"{row['name']} - Category: {category}"
                     
                     doc = Document(
                         page_content=product_text,
                         metadata={
                             "name": row['name'],
                             "category": category,
-                            "category_translated": category_translated,
+                            "category_translated": category,
                             "sub_category": row.get('sub_category', ''),
                             "image": row.get('image', ''),
                             "link": row.get('link', ''),
@@ -187,9 +187,28 @@ class VectorStoreManager:
         """Rebuilds the vector store from scratch"""
         logger.info("Rebuilding vector store")
         
+        # Explicitly release the vector store and trigger GC for Windows
+        self.vector_store = None
+        import gc
+        import shutil
+        import time
+        gc.collect()
+        
         if self.persist_directory.exists():
-            import shutil
-            shutil.rmtree(self.persist_directory)
+            # Try multiple times on Windows as file handles might take a moment to release
+            max_retries = 5
+            for i in range(max_retries):
+                try:
+                    shutil.rmtree(self.persist_directory)
+                    logger.info(f"Existing vector store at {self.persist_directory} deleted")
+                    break
+                except PermissionError as e:
+                    if i == max_retries - 1:
+                        logger.error(f"Failed to delete {self.persist_directory} after {max_retries} attempts: {e}")
+                        raise
+                    logger.warning(f"File in use, retrying deletion ({i+1}/{max_retries})...")
+                    time.sleep(2)
+            
             self.persist_directory.mkdir(exist_ok=True)
         
         self._create_new_store()

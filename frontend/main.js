@@ -253,7 +253,7 @@ async function handleAISearch() {
     const suggestedProducts = itemMatches.map(match => {
       const content = match[1];
       const name = (content.match(/NOME:\s*(.*)/) || [])[1] || 'Produto';
-      const price = (content.match(/PRICE:\s*(.*)/) || [])[1] || 'R$ --';
+      const price = (content.match(/PRICE:\s*(.*)/) || [])[1] || '--';
       const rating = (content.match(/RATING:\s*(.*)/) || [])[1] || '4.0';
       const imageUrl = (content.match(/!\[.*?\]\((.*?)\)/) || [])[1] || '';
 
@@ -287,7 +287,7 @@ function renderProducts(products) {
   
   if (products.length === 0) {
     if (!aiSection.classList.contains('hidden') === false) {
-       productGrid.innerHTML = '<p>Nenhum produto encontrado nesta seção.</p>';
+       productGrid.innerHTML = '<p>No products found in this section.</p>';
     }
     return;
   }
@@ -305,7 +305,7 @@ function renderProducts(products) {
           ${p.ratings || '3.5'} ★
         </div>
         <div class="name" title="${p.name}">${p.name}</div>
-        <div class="price">${p.actual_price || 'R$ --'}</div>
+        <div class="price">${p.actual_price || '--'}</div>
         <button class="buy-btn">Ver Detalhes</button>
       </div>
     `;

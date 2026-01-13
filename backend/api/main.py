@@ -109,10 +109,9 @@ async def generate_text(request: PromptRequest):
             }
         
         # Final Response Generation
-        budget_info = f" (with budget up to R$ {max_price})" if max_price else ""
+        budget_info = f" (with budget up to {max_price})" if max_price else ""
         
-        from products import translate_category
-        relevant_cat_translated = translate_category(relevant_categories[0]) if relevant_categories else "our categories"
+        relevant_cat_name = relevant_categories[0] if relevant_categories else "our categories"
 
         # Load response generation prompt from external file
         response_template = prompt_manager.load_prompt("response_generation")
@@ -128,7 +127,7 @@ async def generate_text(request: PromptRequest):
             "query": request.prompt,
             "context": context_data if context_data else "NADA_ENCONTRADO",
             "budget_info": budget_info,
-            "relevant_category_name": relevant_cat_translated
+            "relevant_category_name": relevant_cat_name
         })
 
         return {
@@ -144,8 +143,7 @@ async def generate_text(request: PromptRequest):
 @app.get("/categories")
 async def get_categories():
     
-    from products import translate_category
-    return [{"id": cat, "name": translate_category(cat)} for cat in ALL_CATEGORIES]
+    return [{"id": cat, "name": cat} for cat in ALL_CATEGORIES]
 
 @app.get("/products/{category}")
 async def get_products_by_category(category: str, page: int = 1, page_size: int = 20):
@@ -161,13 +159,11 @@ async def get_products_by_category(category: str, page: int = 1, page_size: int 
     
     df_slice = df.iloc[start_idx:end_idx].copy()
     
-    from products import clean_price, INR_TO_BRL
+    from products import clean_price
     
     products_list = []
     for _, row in df_slice.iterrows():
         p = row.fillna("").to_dict()
-        price_inr = clean_price(p.get('actual_price', '0'))
-        p['actual_price'] = f"R$ {price_inr * INR_TO_BRL:.2f}"
         products_list.append(p)
         
     return {

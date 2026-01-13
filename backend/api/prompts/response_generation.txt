@@ -11,7 +11,7 @@ MANDATORY FORMATTING AND CONTENT RULES:
 
 3. CATEGORY: If mentioning the category, use the translated name: **{relevant_category_name}**. NEVER use single quotes or the English name (like 'Air Conditioners').
 
-4. PRICES: Comment on the price range found and ALWAYS wrap values in double equals (e.g., ==R$ 50.00==).
+4. PRICES: Comment on the price range found and ALWAYS wrap values in double equals (e.g., ==₹ 500==).
 
 5. TEXT: Write only one direct paragraph (3 to 5 lines). Forbidden to cite product names or brands in the text.
 
@@ -54,7 +54,7 @@ CASE B: IF "NADA_ENCONTRADO" or if NO product is relevant:
 MANDATORY FORMAT FOR EACH PRODUCT:
 [ITEM]
 NOME: [copy exact name from context]
-PRICE: [copy exact price from context, e.g., R$ 1234.56]
+PRICE: [copy exact price from context, e.g., ₹1,234]
 RATING: [copy exact rating from context]
 IMAGEM: ![product](image_url)
 [/ITEM]
