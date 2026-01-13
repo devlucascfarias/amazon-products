@@ -1,15 +1,14 @@
-# 🛍️ Smart Search AI - Intelligent E-commerce Assistant
+# Smart Search AI - Intelligent E-commerce Assistant
 
-An intelligent shopping assistant powered by **Natural Language Processing (NLP)** and **Retrieval-Augmented Generation (RAG)** that transforms traditional keyword searches into semantic, context-aware product discovery.
+An intelligent shopping assistant powered by Natural Language Processing (NLP) and Retrieval-Augmented Generation (RAG) that transforms traditional keyword searches into semantic, context-aware product discovery.
 
 [![Python](https://img.shields.io/badge/Python-3.10+-blue.svg)](https://www.python.org/)
 [![FastAPI](https://img.shields.io/badge/FastAPI-0.100+-green.svg)](https://fastapi.tiangolo.com/)
 [![LangChain](https://img.shields.io/badge/LangChain-Latest-orange.svg)](https://www.langchain.com/)
-[![License](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
 ---
 
-## 📋 Table of Contents
+## Table of Contents
 
 - [Overview](#overview)
 - [Key Features](#key-features)
@@ -20,62 +19,57 @@ An intelligent shopping assistant powered by **Natural Language Processing (NLP)
 - [Project Structure](#project-structure)
 - [API Documentation](#api-documentation)
 - [Vector Store](#vector-store)
-- [Contributing](#contributing)
-- [License](#license)
+- [Prompt Engineering](#prompt-engineering)
 
 ---
 
-## 🎯 Overview
+## Overview
 
-**Smart Search AI** is not just another e-commerce search engine. It's an intelligent assistant that:
-
-- 🧠 **Understands Intent**: Uses LLMs to decode what users really want
-- 🎯 **Semantic Search**: Finds products by meaning, not just keywords
-- 🔍 **Smart Filtering**: Automatically filters irrelevant results
-- 💰 **Budget Aware**: Extracts and respects price constraints
-- 📊 **RAG-Powered**: Queries real product data before generating responses
+**Smart Search AI** is an intelligent e-commerce assistant that goes beyond traditional keyword matching. The system uses Large Language Models (LLMs) to understand user intent, extract contextual information, and provide semantically relevant product recommendations.
 
 ### Example Queries
 
 ```
-❌ Traditional: "notebook"
-✅ Smart Search: "lightweight laptop for students under $800"
+Traditional: "notebook"
+Smart Search: "lightweight laptop for students under $800"
 
-❌ Traditional: "headphones"
-✅ Smart Search: "wireless headphones for gym with good bass"
+Traditional: "headphones"
+Smart Search: "wireless headphones for gym with good bass"
 
-❌ Traditional: "air conditioner"
-✅ Smart Search: "silent air conditioner for small bedroom"
+Traditional: "air conditioner"
+Smart Search: "silent air conditioner for small bedroom"
 ```
 
 ---
 
-## ✨ Key Features
+## Key Features
 
-### 🤖 AI-Powered Search
+### AI-Powered Search
 - **Intent Analysis**: LLM-based query understanding
 - **Category Mapping**: Automatic product category detection
 - **Budget Extraction**: Smart price limit recognition
+- **Contextual Understanding**: Handles complex, natural language queries
 
-### 🔍 Semantic Search (Vector Store)
-- **ChromaDB Integration**: Fast similarity search
-- **Google Embeddings**: High-quality vector representations
-- **~5,500 Products Indexed**: Comprehensive product coverage
+### Semantic Search (Vector Store)
+- **ChromaDB Integration**: Fast similarity search using vector embeddings
+- **Google Embeddings**: High-quality 768-dimensional vector representations
+- **Indexed Products**: Approximately 5,500 products across 112 categories
+- **Performance**: Search results in 100-200ms
 
-### 🎨 Modern UI/UX
-- **Responsive Design**: Works on all devices
+### Modern UI/UX
+- **Responsive Design**: Optimized for all device sizes
 - **Real-time Suggestions**: Dynamic search recommendations
-- **Smart Filters**: AI-generated filter suggestions
+- **Smart Filters**: AI-generated filter suggestions based on query context
 
-### 🛡️ Production-Ready
-- **External Prompts**: Easy prompt management and versioning
-- **Caching**: Optimized performance
-- **Error Handling**: Graceful degradation
-- **CORS Enabled**: Ready for deployment
+### Production-Ready Architecture
+- **External Prompts**: Separated prompt management for easy versioning
+- **Caching**: Optimized performance with intelligent caching
+- **Error Handling**: Graceful degradation and comprehensive error messages
+- **CORS Enabled**: Ready for cross-origin deployment
 
 ---
 
-## 🏗️ Architecture
+## Architecture
 
 ```
 ┌─────────────┐
@@ -116,42 +110,42 @@ An intelligent shopping assistant powered by **Natural Language Processing (NLP)
 
 ### Agent Workflow
 
-1. **Intent Agent**: Analyzes user query → extracts categories and budget
-2. **Retrieval Agent**: Searches vector store → finds semantically similar products
-3. **Filter Agent**: Applies intelligent filtering → removes irrelevant items
-4. **Response Agent**: Generates natural language response → formats product cards
+1. **Intent Agent**: Analyzes user query to extract categories and budget constraints
+2. **Retrieval Agent**: Searches vector store to find semantically similar products
+3. **Filter Agent**: Applies intelligent filtering to remove irrelevant items
+4. **Response Agent**: Generates natural language response and formats product cards
 
 ---
 
-## 🛠️ Tech Stack
+## Tech Stack
 
 ### Backend
-- **FastAPI** - Modern, fast web framework
-- **LangChain** - LLM orchestration framework
-- **Google Gemini AI** - LLM (gemini-2.5-flash-lite)
+- **FastAPI** - Modern, fast web framework for building APIs
+- **LangChain** - Framework for developing LLM-powered applications
+- **Google Gemini AI** - Large Language Model (gemini-2.5-flash-lite)
 - **ChromaDB** - Vector database for semantic search
-- **Pandas** - Data manipulation
-- **Pydantic** - Data validation
+- **Pandas** - Data manipulation and analysis
+- **Pydantic** - Data validation using Python type annotations
 
 ### Frontend
-- **Vanilla JavaScript** - No framework overhead
-- **Vite** - Fast build tool
-- **Modern CSS** - Responsive design
+- **Vanilla JavaScript** - No framework overhead, pure performance
+- **Vite** - Next generation frontend build tool
+- **Modern CSS** - Responsive design with CSS Grid and Flexbox
 
 ### AI/ML
-- **Google Embeddings** (embedding-001)
-- **Prompt Engineering** - External prompt management
-- **RAG Pattern** - Retrieval-Augmented Generation
+- **Google Embeddings** (embedding-001) - Text-to-vector conversion
+- **Prompt Engineering** - External prompt management and versioning
+- **RAG Pattern** - Retrieval-Augmented Generation for accurate responses
 
 ---
 
-## 📦 Installation
+## Installation
 
 ### Prerequisites
 
-- Python 3.10+
-- Node.js 16+
-- Google Gemini API Key
+- Python 3.10 or higher
+- Node.js 16 or higher
+- Google Gemini API Key ([Get one here](https://ai.google.dev/))
 
 ### 1. Clone Repository
 
@@ -193,17 +187,17 @@ cd backend/api
 python init_vector_store.py
 ```
 
-This will:
-- Load ~5,500 products
-- Generate embeddings
-- Create ChromaDB index
-- Takes ~5-10 minutes
+This process will:
+- Load approximately 5,500 products from CSV files
+- Generate embeddings using Google AI
+- Create and persist ChromaDB index
+- Takes approximately 5-10 minutes to complete
 
 ---
 
-## 🚀 Usage
+## Usage
 
-### Start Backend
+### Start Backend Server
 
 ```bash
 cd backend/api
@@ -212,7 +206,7 @@ uvicorn main:app --reload
 
 Backend runs on: `http://localhost:8000`
 
-### Start Frontend
+### Start Frontend Development Server
 
 ```bash
 cd frontend
@@ -227,7 +221,7 @@ Visit `http://localhost:8000/docs` for interactive API documentation (Swagger UI
 
 ---
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 smart-search-ai-products/
@@ -238,29 +232,31 @@ smart-search-ai-products/
 │   │   │   ├── response_generation.txt
 │   │   │   └── README.md
 │   │   ├── chroma_db/            # Vector store (gitignored)
-│   │   ├── main.py               # FastAPI app
+│   │   ├── main.py               # FastAPI application
 │   │   ├── products.py           # Product data logic
-│   │   ├── prompt_manager.py     # Prompt management
+│   │   ├── prompt_manager.py     # Prompt management system
 │   │   ├── vector_store.py       # Vector store manager
-│   │   └── init_vector_store.py  # Vector store initialization
+│   │   ├── init_vector_store.py  # Vector store initialization
+│   │   └── requirements.txt      # Python dependencies
 │   └── data/                     # Product CSV files
 ├── frontend/
-│   ├── index.html
-│   ├── main.js
-│   ├── style.css
-│   └── package.json
+│   ├── index.html                # Main HTML file
+│   ├── main.js                   # JavaScript logic
+│   ├── style.css                 # Styles
+│   └── package.json              # Node dependencies
 ├── .gitignore
+├── .env.example
 └── README.md
 ```
 
 ---
 
-## 🔌 API Documentation
+## API Documentation
 
 ### Main Endpoints
 
 #### `POST /generate`
-Intelligent product search
+Intelligent product search with natural language processing
 
 **Request:**
 ```json
@@ -280,126 +276,130 @@ Intelligent product search
 ```
 
 #### `GET /vector-store/search`
-Direct semantic search
+Direct semantic search in the vector database
 
 **Query Parameters:**
-- `query` (string): Search query
-- `category` (string, optional): Filter by category
-- `limit` (int, default: 20): Number of results
+- `query` (string, required): Search query
+- `category` (string, optional): Filter by specific category
+- `limit` (int, default: 20): Maximum number of results
+
+**Example:**
+```bash
+curl "http://localhost:8000/vector-store/search?query=gym+headphones&limit=10"
+```
 
 #### `POST /vector-store/rebuild`
-Rebuild vector store (use after data updates)
+Rebuild the vector store from scratch (use after data updates)
+
+**Response:**
+```json
+{
+  "status": "success",
+  "message": "Vector store rebuilt successfully"
+}
+```
 
 #### `GET /categories`
-List all available categories
+List all available product categories
+
+**Response:**
+```json
+[
+  {"id": "Air Conditioners", "name": "Air Conditioners"},
+  {"id": "Laptops", "name": "Laptops"},
+  ...
+]
+```
 
 #### `GET /products/{category}`
 Get products by category with pagination
 
+**Query Parameters:**
+- `page` (int, default: 1): Page number
+- `page_size` (int, default: 20): Items per page
+
 ---
 
-## 🧠 Vector Store
+## Vector Store
 
 ### What is it?
 
-The vector store uses **semantic embeddings** to find products by meaning, not just keywords.
+The vector store uses semantic embeddings to find products by meaning rather than exact keyword matching. This enables the system to understand context and user intent.
 
 ### How it works:
 
-1. **Indexing**: Products are converted to 768-dimensional vectors
-2. **Search**: User query is converted to a vector
-3. **Similarity**: Finds closest products in vector space
-4. **Results**: Returns most relevant products
+1. **Indexing Phase**: 
+   - Products are converted to 768-dimensional vectors using Google's embedding model
+   - Vectors are stored in ChromaDB with metadata (name, category, price, etc.)
+
+2. **Search Phase**: 
+   - User query is converted to a vector using the same embedding model
+   - ChromaDB performs similarity search in vector space
+   - Returns products with highest cosine similarity
+
+3. **Results**: 
+   - Products are ranked by semantic relevance
+   - Results include relevance scores for transparency
 
 ### Advantages:
 
-✅ Understands synonyms and context  
-✅ Finds products even without exact keyword match  
-✅ Handles complex, natural language queries  
-✅ Much faster than traditional search  
+- Understands synonyms and related concepts
+- Finds products even without exact keyword match
+- Handles complex, natural language queries
+- Significantly faster than traditional full-text search
+- Accuracy of 90-95% in product relevance
 
 ### Rebuild Vector Store:
 
 ```bash
-# Via script
+# Via Python script
 python init_vector_store.py
 
-# Via API
+# Via API endpoint
 curl -X POST http://localhost:8000/vector-store/rebuild
 ```
 
 ---
 
-## 🎨 Prompt Engineering
+## Prompt Engineering
 
-Prompts are stored externally in `backend/api/prompts/` for easy management:
+Prompts are stored externally in `backend/api/prompts/` for maintainability and version control:
 
-- **category_analysis.txt** - Intent analysis and category mapping
-- **response_generation.txt** - Final response formatting
+- **category_analysis.txt** - Intent analysis and category mapping logic
+- **response_generation.txt** - Final response formatting and product filtering
 
-### Benefits:
+### Benefits of External Prompts:
 
-✅ Easy to edit without touching code  
-✅ Version control for prompts  
-✅ A/B testing different versions  
-✅ Collaboration with non-technical team members  
+- Easy to edit without modifying Python code
+- Version control for prompt iterations
+- A/B testing different prompt versions
+- Collaboration with non-technical team members
+- Hot-reload in development mode
 
----
+### Prompt Manager Usage:
 
-## 🤝 Contributing
+```python
+from prompt_manager import prompt_manager
 
-Contributions are welcome! Please follow these steps:
+# Load a prompt
+template = prompt_manager.load_prompt("category_analysis")
 
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
+# List available prompts
+available = prompt_manager.list_available_prompts()
 
----
+# Reload a prompt (useful in development)
+template = prompt_manager.reload_prompt("category_analysis")
 
-## 📝 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
----
-
-## 👨‍💻 Author
-
-**Lucas Correia Farias**
-
-- GitHub: [@devlucascfarias](https://github.com/devlucascfarias)
-- LinkedIn: [Lucas Correia](https://www.linkedin.com/in/lucas-correia-b856152b5/)
+# Clear cache (forces reload of all prompts)
+prompt_manager.clear_cache()
+```
 
 ---
 
-## 🙏 Acknowledgments
+## Performance Metrics
 
-- **Google Gemini AI** for powerful LLM capabilities
-- **LangChain** for excellent LLM orchestration
-- **ChromaDB** for fast vector search
-- **FastAPI** for modern Python web framework
-
----
-
-## 📊 Project Stats
-
-- **~5,500 Products** indexed
-- **112 Categories** supported
-- **Vector Search** in ~100-200ms
-- **90-95% Accuracy** in product relevance
-
----
-
-## 🔮 Future Improvements
-
-- [ ] Multi-language support
-- [ ] User preference learning
-- [ ] Product recommendation engine
-- [ ] Advanced filters (brand, ratings, etc.)
-- [ ] Real-time inventory updates
-- [ ] Mobile app
-
----
-
-**Made with ❤️ for learning and demonstration purposes**
+- **Products Indexed**: ~5,500 across 112 categories
+- **Vector Search Speed**: 100-200ms average
+- **Embedding Dimensions**: 768 (Google embedding-001)
+- **Search Accuracy**: 90-95% relevance
+- **API Response Time**: <500ms for most queries
